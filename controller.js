@@ -27,14 +27,14 @@ class TaskController {
   async handleAdditionalMenu() {
     while (true) {
       this.view.showAdditionalMenu();
-      const choice = await this.view.getUserInput('Dame el número de la funcion: ');
+      const choice = await this.view.getUserInput('Digite el número de la funcion: ');
 
       // condicional switch para evaluar la opcion que el usuario eligio
       switch (choice) {
         // completar tarea
         case '1':
           this.view.showTasks(this.model.getTask());
-          const taskToDoneStr = await this.view.getUserInput('Escribe el numero de la tarea que quieres completar: ');
+          const taskToDoneStr = await this.view.getUserInput('Digite el numero de la tarea que quieres completar: ');
           const taskToDone = parseInt(taskToDoneStr) - 1;
           this.model.markTaskAsCompleted(taskToDone);
           break;
@@ -52,7 +52,7 @@ class TaskController {
         // borrar tarea
         case '4':
           this.view.showTasks(this.model.getTask());
-          const indexToRemoveStr = await this.view.getUserInput('Dame el numero de la tarea a borrar: ');
+          const indexToRemoveStr = await this.view.getUserInput('Digite el numero de la tarea que quiere borrar: ');
           const indexToRemove = parseInt(indexToRemoveStr) - 1;
           this.model.removeTaskByIndex(indexToRemove)
           break;
@@ -62,7 +62,7 @@ class TaskController {
           return;
 
         default:
-          console.log('Opción Invalida');
+          console.log('opción invalida');
       }
     }
   }
